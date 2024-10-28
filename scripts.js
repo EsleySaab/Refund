@@ -32,7 +32,7 @@ form.onsubmit = (event) => {
   // Previne o comportamento padrão de recarregar a página.
   event.preventDefault()
 
-  // Cria um objeto com os detlahes da nova despesa.
+  // Cria um objeto com os detalhes da nova despesa.
   const newExpense = {
     id: new Date().getTime(),
     expense: expense.value,
@@ -40,5 +40,18 @@ form.onsubmit = (event) => {
     category_name: category.options[category.selectedIndex].text,
     amount: amount.value,
     created_at: new Date(),
+  }
+  // Chama a função que irá adicionar o item na lista.
+  expenseAdd(newExpense)
+}
+
+function expenseAdd(newExpense) {
+  try {
+    // Cria o elemento de li para adicionar o item na lista (ul)
+    const expenseItem = document.createElement("li")
+    expenseItem.classList.add("expense")
+  } catch (error) {
+    alert("Não foi possível atualizar a lista de despesas.")
+    console.log(error)
   }
 }
